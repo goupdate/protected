@@ -3,14 +3,12 @@ package protected
 import (
 	"sync"
 	"testing"
-
-	"github.com/goupdate/protected"
 )
 
 // TestProtected tests the basic functionality of the Protected type.
 func TestProtected(t *testing.T) {
 	// Initialize with an integer
-	protInt := protected.New(10)
+	protInt := New(10)
 
 	// Test Get method
 	val := protInt.Get()
@@ -53,7 +51,7 @@ func TestProtected(t *testing.T) {
 
 // TestConcurrentAccess tests the concurrent access functionality of the Protected type.
 func TestConcurrentAccess(t *testing.T) {
-	protInt := protected.New(0)
+	protInt := New(0)
 	var wg sync.WaitGroup
 	numGoroutines := 100
 	increment := func() {
@@ -83,7 +81,7 @@ func TestConcurrentAccess(t *testing.T) {
 // TestDifferentTypes tests the Protected type with different data types.
 func TestDifferentTypes(t *testing.T) {
 	// Test with a string
-	protStr := protected.New("hello")
+	protStr := New("hello")
 
 	// Test Get method
 	valStr := protStr.Get()
@@ -113,7 +111,7 @@ func TestDifferentTypes(t *testing.T) {
 		B string
 	}
 
-	protStruct := protected.New(myStruct{A: 1, B: "initial"})
+	protStruct := New(myStruct{A: 1, B: "initial"})
 
 	// Test Get method
 	valStruct := protStruct.Get()
